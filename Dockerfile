@@ -1,6 +1,6 @@
 FROM alpine:3.8
 MAINTAINER Vaclav Kral <vasa81@gmail.com>
-LABEL version="4.6.3.1"
+LABEL version="4.6.3.2"
 
 EXPOSE 80
 
@@ -23,6 +23,9 @@ RUN apk update && apk add \
     php7-zlib
 
 ADD files/adminer-4.6.3.php /var/www/adminer.php
+ADD files/index.php /var/www/index.php
+ADD files/plugin.php /var/www/plugin.php
+ADD files/login-password-less.php /var/www/login-password-less.php
 ADD files/nginx.conf /etc/nginx/
 ADD files/php-fpm.conf /etc/php/
 
