@@ -7,7 +7,7 @@ build:
 	docker build --no-cache -t $(IMAGE_VERSION) .
 
 run:
-	$(eval IP:=$(shell ip route | grep docker0 | rev | cut -d ' ' -f 2 | rev))
+	$(eval IP:=$(shell ip route | grep docker0 | grep src | rev | cut -d ' ' -f 2 | rev))
 	docker run -d --name adminer -p 5555:80 --add-host=dockerhost:${IP} ${IMAGE_VERSION}
 
 run-macos:
